@@ -1,0 +1,10 @@
+.container {
+  position: relative;
+  top: 20px;
+  left: 50px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 50px);
+  height: fit-content;
+  text-align: left;
+}
