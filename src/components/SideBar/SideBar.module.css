@@ -8,3 +8,13 @@
   height: fit-content;
   text-align: left;
 }
+.logo {
+  position: relative;
+  left: 20px;
+  width: 25px;
+  height: 25px;
+  margin-bottom: 20px;
+}
+.logo:hover {
+  cursor: pointer;
+}

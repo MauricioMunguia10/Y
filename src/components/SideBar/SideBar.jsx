@@ -1,6 +1,7 @@
 import { IoBriefcaseOutline } from "react-icons/io5";
 import ButtonSB from "./ButtonSB/ButtonSB";
 import styles from "./SideBar.module.css";
+import { useLocation } from "react-router-dom";
 import {
   MdHomeFilled,
   MdOutlineBookmarks,
@@ -13,55 +14,66 @@ import {
 
 const SideBar = () => {
   const links = [
-    { icon: <MdHomeFilled />, text: "Home", path: "/home", enable: true },
-    { icon: <MdSearch />, text: "Search", path: "/search", enable: true },
+    { icon: <MdHomeFilled />, text: "Home", path: "/home", active: true },
+    { icon: <MdSearch />, text: "Search", path: "/search", active: false },
     {
       icon: <MdOutlineNotificationsActive />,
       text: "Notifications",
       path: "/notifications",
-      enable: true,
+      active: false,
     },
     {
       icon: <MdOutlineEmail />,
       text: "Messages",
       path: "/messages",
-      enable: true,
+      active: false,
     },
     {
       icon: <MdOutlineBookmarks />,
       text: "Bookmarks",
       path: "/bookmarks",
-      enable: true,
+      active: false,
     },
     {
       icon: <IoBriefcaseOutline />,
       text: "Jobs",
       path: "/jobs",
-      enable: true,
+      active: false,
     },
     {
       icon: <MdOutlinePeopleOutline />,
       text: "Communities",
       path: "/communities",
-      enable: true,
+      active: true,
     },
     {
       icon: <MdPersonOutline />,
       text: "Profile",
       path: "/profile",
-      enable: true,
+      active: false,
     },
   ];
+  const location = useLocation();
+
+  const currentPath = location.pathname;
+  const updatedLinks = links.map((link) => {
+    if (link.path === currentPath) {
+      return { ...link, active: true };
+    } else {
+      return { ...link, active: false };
+    }
+  });
+
   return (
     <div className={styles.container}>
-      Enter SideBAR rasgos
-      {links.map((link, index) => (
+      <img src="/whiteLogo.png" alt="logo" className={styles.logo} />
+      {updatedLinks.map((link, index) => (
         <ButtonSB
           key={index}
           icon={link.icon}
           text={link.text}
           path={link.path}
-          enable={link.enable}
+          active={link.active}
         />
       ))}
     </div>

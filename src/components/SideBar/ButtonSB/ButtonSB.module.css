@@ -28,6 +28,9 @@
   align-items: center;
   justify-content: center;
 }
+.color {
+  color: #9766d2;
+}
 
 .text {
   white-space: nowrap;
