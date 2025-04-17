@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
         <SideBar />
       </div>
       <div className={styles.center}>
-        <div>{children}</div>
+        <div className={styles.children}>{children}</div>
       </div>
       <div className={styles.right}> </div>
     </div>

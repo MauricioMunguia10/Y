@@ -3,25 +3,37 @@
   flex-direction: row;
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
 }
 
 .left {
+  position: sticky;
+  top: 0;
   width: 20%;
-  overflow-y: auto;
+  height: 100vh;
   flex-shrink: 0;
 }
 
 .center {
   height: 100vh;
   width: calc(60% - 2px);
-  overflow-y: auto;
   flex-shrink: 0;
+  overflow-y: auto;
   border-left: 1px solid rgb(146, 144, 144);
   border-right: 1px solid rgb(146, 144, 144);
 }
 
 .right {
+  position: sticky;
+  top: 0;
   width: 20%;
-  overflow-y: auto;
+  height: 100vh;
   flex-shrink: 0;
+}
+.children {
+  position: relative;
+  top: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 20px);
 }
