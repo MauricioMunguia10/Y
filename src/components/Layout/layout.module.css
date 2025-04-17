@@ -1,4 +1,7 @@
 .container {
+  position: absolute;
+  top: 0px;
+  left: 0px;
   display: flex;
   flex-direction: row;
   height: 100vh;
@@ -19,8 +22,8 @@
   width: calc(60% - 2px);
   flex-shrink: 0;
   overflow-y: auto;
-  border-left: 1px solid rgb(146, 144, 144);
-  border-right: 1px solid rgb(146, 144, 144);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
 }
 
 .right {

@@ -5,6 +5,11 @@ import { FaRegComment, FaRegHeart } from "react-icons/fa";
 import { IoShareSocialOutline } from "react-icons/io5";
 
 const Post = ({ post }) => {
+  const color = getComputedStyle(document.documentElement)
+    .getPropertyValue("--primary-color")
+    .trim();
+
+  console.log(color);
   return (
     <div className={styles.container}>
       <div className={styles.photoProfile}>
@@ -13,7 +18,7 @@ const Post = ({ post }) => {
       <div className={styles.postContent}>
         <div className={styles.postTop}>
           <h3 className={styles.author}>{post.author}</h3>
-          <RiVerifiedBadgeFill color="#9766d2" />
+          <RiVerifiedBadgeFill color={color} />
           <p className={styles.user}>{post.user}</p>
           <LuDot />
           <p className={styles.date}>
