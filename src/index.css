@@ -7,8 +7,11 @@
   color: white;
   background-color: black;
   --primary-color: #9766d2;
-  --secundary-color: black;
+  --secondary-color: black;
+  --tertiary-color: white;
   --border-color: rgb(146, 144, 144);
-  --font-color: white;
+  --primary-font-color: white;
+  --secondary-font-color: black;
   --hover-color: #2b2a33;
+  --transition-main: all 0.3s ease-in-out;
 }

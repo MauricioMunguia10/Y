@@ -1,0 +1,26 @@
+.container{
+  width: 50%;
+  height: 60px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  gap: 10px;
+}
+.primary{
+  background-color: var(--tertiary-color);
+  color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+}
+.secondary{
+  background-color: var(--primary-color);
+  color: var(--tertiary-color);
+  border: 1px solid var(--border-color);
+}
+.container:hover{
+  cursor: pointer;
+  scale: 1.05;
+  transition: var(--transition-main);
+}
