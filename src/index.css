@@ -13,5 +13,6 @@
   --primary-font-color: white;
   --secondary-font-color: black;
   --hover-color: #2b2a33;
+  --bg-modal-color: rgba(91, 112, 131, 0.4);
   --transition-main: all 0.3s ease-in-out;
 }
