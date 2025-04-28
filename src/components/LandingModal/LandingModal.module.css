@@ -16,4 +16,38 @@
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 20px;
+  cursor: default;
+}
+.helpMessage:hover {
+  color: var(--primary-color);
+  cursor: pointer;
+  scale: 1.05;
+}
+
+.divider {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.divider:not(:empty)::before {
+  margin-right: 1rem;
+}
+
+.divider:not(:empty)::after {
+  margin-left: 1rem;
+}
+
+.divider span {
+  font-size: 14px;
+  color: var(--tertiary-color);
 }
