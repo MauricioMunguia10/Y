@@ -3,6 +3,7 @@ import LandingButton from "../LandingButton/LandingButton";
 import styles from "./LandingModal.module.css";
 import { useState } from "react";
 import { registerUser } from "../../api/auth";
+import { sendNotification } from "../../utils/toastNotifications";
 
 const LandingModal = ({ type }) => {
   //1 for signup, 2 for login
@@ -18,42 +19,72 @@ const LandingModal = ({ type }) => {
     if (!validateData()) return;
     try {
       const data = await registerUser(registerData);
-      console.log("Usuario registrado:", data);
+      sendNotification(data.message, "success");
     } catch (err) {
-      console.error("Error:", err.message);
+      sendNotification(err.message, "error");
     }
   };
   const validateData = () => {
-    if (!registerData.name) {
-      alert("Name is required");
-      return false;
+    const fields = [
+      {
+        key: "name",
+        message: "Name is required",
+        format: (value) => value.trim(),
+      },
+      {
+        key: "lastName",
+        message: "Last Name is required",
+        format: (value) => value.trim().toLowerCase(),
+      },
+      {
+        key: "username",
+        message: "Username is required",
+        format: (value) => value.trim(),
+      },
+      {
+        key: "email",
+        message: "Email is required",
+        format: (value) => value.trim(),
+      },
+      {
+        key: "password",
+        message: "Password is required",
+        format: (value) => value.trim(),
+      },
+      {
+        key: "confirmPassword",
+        message: "Confirm Password is required",
+        format: (value) => value.trim(),
+      },
+    ];
+
+    for (const field of fields) {
+      if (!registerData[field.key]) {
+        sendNotification(field.message, "error");
+        return false;
+      }
+
+      if (field.format) {
+        registerData[field.key] = field.format(registerData[field.key]);
+      }
     }
-    if (!registerData.lastName) {
-      alert("Last Name is required");
-      return false;
-    }
-    if (!registerData.username) {
-      alert("Username is required");
-      return false;
-    }
-    if (!registerData.email) {
-      alert("Email is required");
-      return false;
-    }
-    if (!registerData.password) {
-      alert("Password is required");
-      return false;
-    }
-    if (!registerData.confirmPassword) {
-      alert("Confirm Password is required");
-      return false;
-    }
+
     if (registerData.password !== registerData.confirmPassword) {
-      alert("Passwords do not match");
+      sendNotification("Passwords do not match", "error");
       return false;
     }
+    if (!registerData.email || !validateEmail(registerData.email)) {
+      sendNotification("Invalid email format", "error");
+      return false;
+    }
+
     return true;
   };
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setRegisterData((prev) => ({ ...prev, [name]: value }));
