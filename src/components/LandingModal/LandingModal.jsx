@@ -28,6 +28,9 @@ const LandingModal = ({ type }) => {
     if (!validateData()) return;
     try {
       const data = await registerUser(registerData);
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
       sendNotification(data.message, "success");
       setTimeout(() => {
         navigate("/home");
