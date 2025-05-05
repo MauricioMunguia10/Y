@@ -9,7 +9,6 @@ const Post = ({ post }) => {
     .getPropertyValue("--primary-color")
     .trim();
 
-  console.log(color);
   return (
     <div className={styles.container}>
       <div className={styles.photoProfile}>
